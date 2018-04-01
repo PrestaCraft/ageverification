@@ -1,0 +1,755 @@
+.remodal-av .btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.remodal-av .btn-default:focus,
+.remodal-av .btn-default.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.remodal-av .btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.remodal-av .btn-default:active,
+.remodal-av .btn-default.active,
+.remodal-av .open > .dropdown-toggle.btn-default {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.remodal-av .btn-default:active:hover,
+.remodal-av .btn-default.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-default:hover,
+.remodal-av .btn-default:active:focus,
+.remodal-av .btn-default.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-default:focus,
+.remodal-av .btn-default:active.focus,
+.remodal-av .btn-default.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-default.focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+.remodal-av .btn-default:active,
+.remodal-av .btn-default.active,
+.remodal-av .open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+.remodal-av .btn-default.disabled:hover,
+.remodal-av .btn-default[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-default:hover,
+.remodal-av .btn-default.disabled:focus,
+.remodal-av .btn-default[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-default:focus,
+.remodal-av .btn-default.disabled.focus,
+.remodal-av .btn-default[disabled].focus,
+.remodal-av fieldset[disabled] .btn-default.focus {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.remodal-av .btn-default .badge {
+  color: #fff;
+  background-color: #333;
+}
+.remodal-av .btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.remodal-av .btn-primary:focus,
+.remodal-av .btn-primary.focus {
+  color: #fff;
+  background-color: #286090;
+  border-color: #122b40;
+}
+.remodal-av .btn-primary:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.remodal-av .btn-primary:active,
+.remodal-av .btn-primary.active,
+.remodal-av .open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.remodal-av .btn-primary:active:hover,
+.remodal-av .btn-primary.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-primary:hover,
+.remodal-av .btn-primary:active:focus,
+.remodal-av .btn-primary.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-primary:focus,
+.remodal-av .btn-primary:active.focus,
+.remodal-av .btn-primary.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #204d74;
+  border-color: #122b40;
+}
+.remodal-av .btn-primary:active,
+.remodal-av .btn-primary.active,
+.remodal-av .open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.remodal-av .btn-primary.disabled:hover,
+.remodal-av .btn-primary[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-primary:hover,
+.remodal-av .btn-primary.disabled:focus,
+.remodal-av .btn-primary[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-primary:focus,
+.remodal-av .btn-primary.disabled.focus,
+.remodal-av .btn-primary[disabled].focus,
+.remodal-av fieldset[disabled] .btn-primary.focus {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.remodal-av .btn-primary .badge {
+  color: #337ab7;
+  background-color: #fff;
+}
+.remodal-av .btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.remodal-av .btn-success:focus,
+.remodal-av .btn-success.focus {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+.remodal-av .btn-success:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.remodal-av .btn-success:active,
+.remodal-av .btn-success.active,
+.remodal-av .open > .dropdown-toggle.btn-success {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.remodal-av .btn-success:active:hover,
+.remodal-av .btn-success.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-success:hover,
+.remodal-av .btn-success:active:focus,
+.remodal-av .btn-success.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-success:focus,
+.remodal-av .btn-success:active.focus,
+.remodal-av .btn-success.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-success.focus {
+  color: #fff;
+  background-color: #398439;
+  border-color: #255625;
+}
+.remodal-av .btn-success:active,
+.remodal-av .btn-success.active,
+.remodal-av open > .dropdown-toggle.btn-success {
+  background-image: none;
+}
+.remodal-av .btn-success.disabled:hover,
+.remodal-av .btn-success[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-success:hover,
+.remodal-av .btn-success.disabled:focus,
+.remodal-av .btn-success[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-success:focus,
+.remodal-av .btn-success.disabled.focus,
+.remodal-av .btn-success[disabled].focus,
+.remodal-av fieldset[disabled] .btn-success.focus {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.remodal-av .btn-success .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+.remodal-av .btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.remodal-av .btn-info:focus,
+.remodal-av .btn-info.focus {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #1b6d85;
+}
+.remodal-av .btn-info:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.remodal-av .open > .dropdown-toggle.btn-default {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.remodal-av .btn-default:active:hover,
+.remodal-av .btn-default.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-default:hover,
+.remodal-av .btn-default:active:focus,
+.remodal-av .btn-default.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-default:focus,
+.remodal-av .btn-default:active.focus,
+.remodal-av .btn-default.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-default.focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+.remodal-av .btn-default:active,
+.remodal-av .btn-default.active,
+.remodal-av open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+.remodal-av .btn-default.disabled:hover,
+.remodal-av .btn-default[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-default:hover,
+.remodal-av .btn-default.disabled:focus,
+.remodal-av .btn-default[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-default:focus,
+.remodal-av .btn-default.disabled.focus,
+.remodal-av .btn-default[disabled].focus,
+.remodal-av fieldset[disabled] .btn-default.focus {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.remodal-av .btn-default .badge {
+  color: #fff;
+  background-color: #333;
+}
+.remodal-av .btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.remodal-av .btn-primary:focus,
+.remodal-av .btn-primary.focus {
+  color: #fff;
+  background-color: #286090;
+  border-color: #122b40;
+}
+.remodal-av .btn-primary:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.remodal-av .btn-primary:active,
+.remodal-av .btn-primary.active,
+.remodal-av .open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.remodal-av .btn-primary:active:hover,
+.remodal-av .btn-primary.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-primary:hover,
+.remodal-av .btn-primary:active:focus,
+.remodal-av .btn-primary.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-primary:focus,
+.remodal-av .btn-primary:active.focus,
+.remodal-av .btn-primary.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #204d74;
+  border-color: #122b40;
+}
+.remodal-av .btn-primary:active,
+.remodal-av .btn-primary.active,
+.remodal-av .open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.remodal-av .btn-primary.disabled:hover,
+.remodal-av .btn-primary[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-primary:hover,
+.remodal-av .btn-primary.disabled:focus,
+.remodal-av .btn-primary[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-primary:focus,
+.remodal-av .btn-primary.disabled.focus,
+.remodal-av .btn-primary[disabled].focus,
+.remodal-av fieldset[disabled] .btn-primary.focus {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.remodal-av .btn-primary .badge {
+  color: #337ab7;
+  background-color: #fff;
+}
+.remodal-av .btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.remodal-av .btn-success:focus,
+.remodal-av .btn-success.focus {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+.remodal-av .btn-success:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.remodal-av .btn-success:active,
+.remodal-av .btn-success.active,
+.remodal-av .open > .dropdown-toggle.btn-success {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.remodal-av .btn-success:active:hover,
+.remodal-av .btn-success.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-success:hover,
+.remodal-av .btn-success:active:focus,
+.remodal-av .btn-success.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-success:focus,
+.remodal-av .btn-success:active.focus,
+.remodal-av .btn-success.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-success.focus {
+  color: #fff;
+  background-color: #398439;
+  border-color: #255625;
+}
+.remodal-av .btn-success:active,
+.remodal-av .btn-success.active,
+.remodal-av .open > .dropdown-toggle.btn-success {
+  background-image: none;
+}
+.remodal-av .btn-success.disabled:hover,
+.remodal-av .btn-success[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-success:hover,
+.remodal-av .btn-success.disabled:focus,
+.remodal-av .btn-success[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-success:focus,
+.remodal-av .btn-success.disabled.focus,
+.remodal-av .btn-success[disabled].focus,
+.remodal-av fieldset[disabled] .btn-success.focus {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.remodal-av .btn-success .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+.remodal-av .btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.remodal-av .btn-info:focus,
+.remodal-av .btn-info.focus {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #1b6d85;
+}
+.remodal-av .btn-info:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.remodal-av .btn-info:active,
+.remodal-av .btn-info.active,
+.remodal-av .open > .dropdown-toggle.btn-info {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.remodal-av .btn-info:active:hover,
+.remodal-av .btn-info.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-info:hover,
+.remodal-av .btn-info:active:focus,
+.remodal-av .btn-info.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-info:focus,
+.remodal-av .btn-info:active.focus,
+.remodal-av .btn-info.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-info.focus {
+  color: #fff;
+  background-color: #269abc;
+  border-color: #1b6d85;
+}
+.remodal-av .btn-info:active,
+.remodal-av .btn-info.active,
+.remodal-av .open > .dropdown-toggle.btn-info {
+  background-image: none;
+}
+.remodal-av .btn-info.disabled:hover,
+.remodal-av .btn-info[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-info:hover,
+.remodal-av .btn-info.disabled:focus,
+.remodal-av .btn-info[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-info:focus,
+.remodal-av .btn-info.disabled.focus,
+.remodal-av .btn-info[disabled].focus,
+.remodal-av fieldset[disabled] .btn-info.focus {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.remodal-av .btn-info .badge {
+  color: #5bc0de;
+  background-color: #fff;
+}
+.remodal-av .btn-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.remodal-av .btn-warning:focus,
+.remodal-av .btn-warning.focus {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #985f0d;
+}
+.remodal-av .btn-warning:hover {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.remodal-av .btn-warning:active,
+.remodal-av .btn-warning.active,
+.remodal-av .open > .dropdown-toggle.btn-warning {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.remodal-av .btn-warning:active:hover,
+.remodal-av .btn-warning.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-warning:hover,
+.remodal-av .btn-warning:active:focus,
+.remodal-av .btn-warning.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-warning:focus,
+.remodal-av .btn-warning:active.focus,
+.remodal-av .btn-warning.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-warning.focus {
+  color: #fff;
+  background-color: #d58512;
+  border-color: #985f0d;
+}
+.remodal-av .btn-warning:active,
+.remodal-av .btn-warning.active,
+.remodal-av .open > .dropdown-toggle.btn-warning {
+  background-image: none;
+}
+.remodal-av .btn-warning.disabled:hover,
+.remodal-av .btn-warning[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-warning:hover,
+.remodal-av .btn-warning.disabled:focus,
+.remodal-av .btn-warning[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-warning:focus,
+.remodal-av .btn-warning.disabled.focus,
+.remodal-av .btn-warning[disabled].focus,
+.remodal-av fieldset[disabled] .btn-warning.focus {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.remodal-av .btn-warning .badge {
+  color: #f0ad4e;
+  background-color: #fff;
+}
+.remodal-av .btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.remodal-av .btn-danger:focus,
+.remodal-av .btn-danger.focus {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #761c19;
+}
+.remodal-av .btn-danger:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.remodal-av .btn-danger:active,
+.remodal-av .btn-danger.active,
+.remodal-av .open > .dropdown-toggle.btn-danger {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.remodal-av .btn-danger:active:hover,
+.remodal-av .btn-danger.active:hover,
+.remodal-av .open > .dropdown-toggle.btn-danger:hover,
+.remodal-av .btn-danger:active:focus,
+.remodal-av .btn-danger.active:focus,
+.remodal-av .open > .dropdown-toggle.btn-danger:focus,
+.remodal-av .btn-danger:active.focus,
+.remodal-av .btn-danger.active.focus,
+.remodal-av .open > .dropdown-toggle.btn-danger.focus {
+  color: #fff;
+  background-color: #ac2925;
+  border-color: #761c19;
+}
+.remodal-av .btn-danger:active,
+.remodal-av .btn-danger.active,
+.remodal-av .open > .dropdown-toggle.btn-danger {
+  background-image: none;
+}
+.remodal-av .btn-danger.disabled:hover,
+.remodal-av .btn-danger[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-danger:hover,
+.remodal-av .btn-danger.disabled:focus,
+.remodal-av .btn-danger[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-danger:focus,
+.remodal-av .btn-danger.disabled.focus,
+.remodal-av .btn-danger[disabled].focus,
+.remodal-av fieldset[disabled] .btn-danger.focus {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.remodal-av .btn-danger .badge {
+  color: #d9534f;
+  background-color: #fff;
+}
+.remodal-av .btn-link {
+  font-weight: normal;
+  color: #337ab7;
+  border-radius: 0;
+}
+.remodal-av .btn-link,
+.remodal-av .btn-link:active,
+.remodal-av .btn-link.active,
+.remodal-av .btn-link[disabled],
+.remodal-av fieldset[disabled] .btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.remodal-av .btn-link,
+.remodal-av .btn-link:hover,
+.remodal-av .btn-link:focus,
+.remodal-av .btn-link:active {
+  border-color: transparent;
+}
+.remodal-av .btn-link:hover,
+.remodal-av .btn-link:focus {
+  color: #23527c;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.remodal-av .btn-link[disabled]:hover,
+.remodal-av fieldset[disabled] .btn-link:hover,
+.remodal-av .btn-link[disabled]:focus,
+.remodal-av fieldset[disabled] .btn-link:focus {
+  color: #777;
+  text-decoration: none;
+}
+.remodal-av .btn-lg,
+.remodal-av .btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+.remodal-av .btn-sm,
+.remodal-av .btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.remodal-av .btn-xs,
+.remodal-av .btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.remodal-av .btn-block {
+  display: block;
+  width: 100%;
+}
+.remodal-av .btn-block + .btn-block {
+  margin-top: 5px;
+}
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+.remodal-av .fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+.remodal-av .fade.in {
+  opacity: 1;
+}
+.remodal-av .collapse {
+  display: none;
+}
+.remodal-av .collapse.in {
+  display: block;
+}
+.remodal-av tr.collapse.in {
+  display: table-row;
+}
+.remodal-av tbody.collapse.in {
+  display: table-row-group;
+}
+.remodal-av .collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: .35s;
+  -o-transition-duration: .35s;
+  transition-duration: .35s;
+  -webkit-transition-property: height, visibility;
+  -o-transition-property: height, visibility;
+  transition-property: height, visibility;
+}
+.remodal-av .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.remodal-av .dropup,
+.remodal-av .dropdown {
+  position: relative;
+}
+.remodal-av .dropdown-toggle:focus {
+  outline: 0;
+}
+.remodal-av .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.remodal-av .dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+.remodal-av .dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.remodal-av .dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.remodal-av .dropdown-menu > li > a:hover,
+.remodal-av .dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+.remodal-av .dropdown-menu > .active > a,
+.remodal-av .dropdown-menu > .active > a:hover,
+.remodal-av .dropdown-menu > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  outline: 0;
+}
+.remodal-av .dropdown-menu > .disabled > a,
+.remodal-av .dropdown-menu > .disabled > a:hover,
+.remodal-av .dropdown-menu > .disabled > a:focus {
+  color: #777;
+}
+.remodal-av .dropdown-menu > .disabled > a:hover,
+.remodal-av .dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.remodal-av .open > .dropdown-menu {
+  display: block;
+}
+.remodal-av .open > a {
+  outline: 0;
+}
+.remodal-av .dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+.remodal-av .dropdown-menu-left {
+  right: auto;
+  left: 0;
+}
+.remodal-av .dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #777;
+  white-space: nowrap;
+}
+.remodal-av .dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 990;
+}
+.remodal-av .pull-right > .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.remodal-av .dropup .caret,
+.remodal-av .navbar-fixed-bottom .dropdown .caret {
+  content: "";
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid \9;
+}
+.remodal-av .dropup .dropdown-menu,
+.remodal-av .navbar-fixed-bottom .dropdown .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 2px;
+}
+@media (min-width: 768px) {
+  .remodal-av .navbar-right .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+  .remodal-av .navbar-right .dropdown-menu-left {
+    right: auto;
+    left: 0;
+  }
+}

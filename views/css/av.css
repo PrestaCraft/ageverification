@@ -1,0 +1,23 @@
+.remodal-av p {
+    margin-bottom: 30px;
+}
+
+.remodal-confirm {
+    margin-top: 30px;
+}
+
+.dis {
+    background: #e0e0e0 !important;
+    color: #333;
+}
+
+.dis-age {
+    background: #ff3f49 !important;
+    color: white;
+}
+
+@media(max-width: 397px) {
+    .av-year {
+        margin-top: 6px !important;
+    }
+}
