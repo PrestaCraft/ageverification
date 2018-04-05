@@ -1,11 +1,11 @@
 # Age verification popup (ageverification)
 
-### Current version: 1.0.0
+### Current version: 1.1.0
 
 | PS compatibility       | Tested?            |    Ok?                |
 | ---------------------- |:------------------:| ---------------------:|
 | 1.6                    | :heavy_check_mark: |    :heavy_check_mark: |
-| 1.7                    | :heavy_check_mark: |   :heavy_check_mark:  |
+| 1.7                    | :heavy_check_mark: |    :heavy_check_mark: |
 
 This module displays the age verification popup and validates user's age.
 

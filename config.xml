@@ -2,7 +2,7 @@
 <module>
 	<name>ageverification</name>
 	<displayName><![CDATA[Age verification]]></displayName>
-	<version><![CDATA[1.0.0]]></version>
+	<version><![CDATA[1.1.0]]></version>
 	<description><![CDATA[User has to choose his birthdate in order to access Your store.]]></description>
 	<author><![CDATA[PrestaCraft]]></author>
 	<tab><![CDATA[front_office_features]]></tab>

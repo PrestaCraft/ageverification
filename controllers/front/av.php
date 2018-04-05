@@ -9,11 +9,11 @@
  */
 
 $require = array(
-    'classes/AgeverificationDb.php',
+    'classes/AgeVerificationDb.php',
 );
 
 foreach ($require as $item) {
-    require_once(_PS_MODULE_DIR_.'/ageverification/'.$item);
+    require_once(_PS_MODULE_DIR_.'ageverification/'.$item);
 }
 
 class AgeverificationAvModuleFrontController extends ModuleFrontController

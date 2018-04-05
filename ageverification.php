@@ -13,11 +13,11 @@ if (!defined('_PS_VERSION_')) {
 }
 
 $require = array(
-    'classes/AgeverificationDb.php',
+    'classes/AgeVerificationDb.php',
 );
 
 foreach ($require as $item) {
-    require_once(_PS_MODULE_DIR_.'/ageverification/'.$item);
+    require_once(_PS_MODULE_DIR_.'ageverification/'.$item);
 }
 
 class Ageverification extends Module
@@ -28,7 +28,7 @@ class Ageverification extends Module
     {
         $this->name = 'ageverification';
         $this->tab = 'front_office_features';
-        $this->version = '1.0.0';
+        $this->version = '1.1.0';
         $this->author = 'PrestaCraft';
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -249,8 +249,14 @@ class Ageverification extends Module
             'id_language' => $this->context->language->id,
         );
 
+        $data = file_get_contents('http://prestacraft.com/free-modules/version_checker.php?module='.$this->name.'&version='.$this->version.'');
+
         $html = '<style> #firstline, #secondline, #thirdline, #fourthline { display: none; } 
-                .mColorPicker { width: 100px !important; } </style>';
+                .mColorPicker { width: 100px !important; } </style>
+                <div class="panel">
+                 <h3>'.$this->l('Version checker').'</h3>
+        '.$data.'
+                </div>';
 
         return $html.$helper->generateForm(array($this->getConfigForm()));
     }
