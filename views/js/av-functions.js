@@ -24,7 +24,7 @@ function avReject()
 function avAjax()
 {
     $.ajax({
-        url: "http://localhost/ps17/",
+        url: baseDir,
         type: 'post',
         data: {
             ajax       : true,
