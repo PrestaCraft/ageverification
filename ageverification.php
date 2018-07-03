@@ -249,7 +249,7 @@ class Ageverification extends Module
             'id_language' => $this->context->language->id,
         );
 
-        $data = file_get_contents('http://prestacraft.com/free-modules/version_checker.php?module='.$this->name.'&version='.$this->version.'');
+        $data = file_get_contents('http://prestacraft.com/version_checker.php?module='.$this->name.'&version='.$this->version.'');
 
         $html = '<style> #firstline, #secondline, #thirdline, #fourthline { display: none; } 
                 .mColorPicker { width: 100px !important; } </style>
