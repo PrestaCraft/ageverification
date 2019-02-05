@@ -30,7 +30,7 @@
      }
      {/if}
 
-    {if $header_font || $header_size || $header_mobile}
+    {if $header_font || $header_size || $header_size_mobile}
          .remodal-av h3 {
              {if $header_font}
              font-family: "{$header_font}" !important;
@@ -49,7 +49,7 @@
          {/if}
      {/if}
 
-     {if $content_font || $content_size || $content_mobile}
+     {if $content_font || $content_size || $content_size_mobile}
          .remodal-av p {
              {if $content_font}
                  font-family: "{$content_font}" !important;

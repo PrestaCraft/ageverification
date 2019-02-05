@@ -28,7 +28,7 @@ class Ageverification extends Module
     {
         $this->name = 'ageverification';
         $this->tab = 'front_office_features';
-        $this->version = '1.2.0';
+        $this->version = '1.3.0';
         $this->author = 'PrestaCraft';
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -51,22 +51,8 @@ class Ageverification extends Module
         Configuration::updateValue("AGEVERIFICATION_BG_COLOR", "#2b2e38");
         Configuration::updateValue("AGEVERIFICATION_VALIDATION_MODE", "live");
         Configuration::updateValue("AGEVERIFICATION_BG_POPUP_COLOR", "#ffffff");
-        Configuration::updateValue("AGEVERIFICATION_SECRET", $this->random_str(20));
 
-        Db::getInstance()->execute(
-            'CREATE TABLE IF NOT EXISTS 
-            '._DB_PREFIX_.'ageverification (
-            id_ageverification INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            token VARCHAR(256) NOT NULL,
-            accepted TINYINT DEFAULT 0,
-            `date` DATETIME
-            ) 
-            '
-        );
-
-        return parent::install() &&
-            $this->registerHook('displayFooter') &&
-            $this->registerHook('header');
+        return parent::install() && $this->registerHook('displayFooter') && $this->registerHook('header');
     }
 
     public function uninstall()
@@ -78,7 +64,7 @@ class Ageverification extends Module
     {
         require_once(_PS_MODULE_DIR_ . 'ageverification/classes/AgeVerificationDb.php');
 
-        if (!AgeVerificationDb::checkByToken(Tools::getToken())) {
+        if ((bool)$this->context->cookie->__get('ageverification_validated') === false) {
             $this->context->smarty->assign(
                 'title', Configuration::get("AGEVERIFICATION_TITLE_".$this->context->language->id)
             );
@@ -221,7 +207,7 @@ class Ageverification extends Module
 
         $output = $this->context->smarty->fetch($this->local_path.'views/templates/admin/configure.tpl');
 
-        return $output.$this->renderForm().$this->advancedSettingsRender();
+        return $output.$this->renderForm();
     }
 
     /**
@@ -566,173 +552,37 @@ class Ageverification extends Module
      */
     protected function postProcess()
     {
-        if (isset($_POST["deleterows"])) {
-            $cnt = Db::getInstance()->executeS('SELECT id_ageverification FROM '._DB_PREFIX_.'ageverification 
-             ORDER BY `date` ASC LIMIT '.(int)$_POST["nrrows"].'');
+        $form_values = $this->getConfigFormValues();
 
-            if (count($cnt) > 0) {
-                $list = '';
-                foreach ($cnt as $row) {
-                    $list .= $row['id_ageverification'] . ',';
-                }
-                $list = rtrim($list, ',');
-                Db::getInstance()->execute('DELETE FROM ' . _DB_PREFIX_ . 'ageverification 
-                WHERE id_ageverification IN(' . $list . ')');
-            }
-        } else {
-            $form_values = $this->getConfigFormValues();
-
-            foreach (array_keys($form_values) as $key) {
-                Configuration::updateValue($key, Tools::getValue($key));
-            }
-
-            $languages = Language::getLanguages(true);
-
-            foreach ($languages as $lang) {
-                $langid = $lang['id_lang'];
-                Configuration::updateValue(
-                    "AGEVERIFICATION_CONTENT_{$langid}",
-                    Tools::getValue("AGEVERIFICATION_CONTENT_{$langid}")
-                );
-                Configuration::updateValue(
-                    "AGEVERIFICATION_TITLE_{$langid}",
-                    Tools::getValue("AGEVERIFICATION_TITLE_{$langid}")
-                );
-                Configuration::updateValue(
-                    "AGEVERIFICATION_BIRTH_{$langid}",
-                    Tools::getValue("AGEVERIFICATION_BIRTH_{$langid}")
-                );
-                Configuration::updateValue(
-                    "AGEVERIFICATION_BUTTON_{$langid}",
-                    Tools::getValue("AGEVERIFICATION_BUTTON_{$langid}")
-                );
-            }
+        foreach (array_keys($form_values) as $key) {
+            Configuration::updateValue($key, Tools::getValue($key));
         }
 
+        $languages = Language::getLanguages(true);
+
+        foreach ($languages as $lang) {
+            $langid = $lang['id_lang'];
+            Configuration::updateValue(
+                "AGEVERIFICATION_CONTENT_{$langid}",
+                Tools::getValue("AGEVERIFICATION_CONTENT_{$langid}")
+            );
+            Configuration::updateValue(
+                "AGEVERIFICATION_TITLE_{$langid}",
+                Tools::getValue("AGEVERIFICATION_TITLE_{$langid}")
+            );
+            Configuration::updateValue(
+                "AGEVERIFICATION_BIRTH_{$langid}",
+                Tools::getValue("AGEVERIFICATION_BIRTH_{$langid}")
+            );
+            Configuration::updateValue(
+                "AGEVERIFICATION_BUTTON_{$langid}",
+                Tools::getValue("AGEVERIFICATION_BUTTON_{$langid}")
+            );
+        }
     }
 
     public static function getVersion()
     {
         return Tools::substr(_PS_VERSION_, 0, 3);
-    }
-
-    private function advancedSettingsRender()
-    {
-        $html = '<div class="panel text-center">';
-            $html .= '<h3>'.$this->l("Advanced settings - delete database rows").'</h3>';
-            $html .= '<p>'.$this->l("Use this only if you are experienced user.").'</p>';
-            $html .= '<a class="btn btn-default togglesettings">'.$this->l("Show/Hide settings").'</a>';
-
-            $html .= '<div class="av-settings" style="padding-top:20px;display:none;">';
-
-             $html .= '<h4 style="font-weight:bold;text-transform:uppercase;">'.$this->l("Delete manually").'</h4>';
-
-                $html .= '<p>'.$this->l("Your table has already").' <strong><span class="av-total">'.AgeVerificationDb::count().' 
-               </span></strong>'.$this->l("rows.").'</p>';
-
-                 $html .= '<p>'.$this->l("This is the number of 'remembered' and validated devices stored in 
-                 the database. Popup will not appear again on those devices.").'</p>';
-
-                $html .= '<p>'.$this->l("You can delete the oldest X records by typing the number of records and 
-                clicking DELETE button.").'</p>';
-
-                $html .= '<p>'.$this->l("This number must have a value").
-                    ' <strong>'.$this->l("lower of equal").'</strong> '.
-                    $this->l("to total number of rows, which is").' 
-                    <strong>'.AgeVerificationDb::count().'</strong>.</p>';
-
-                $html .= '<table style="margin: 0 auto;">';
-                    $html .= '<tr>';
-                        $html .= '<td style="font-weight:bold;padding:5px;">'.$this->l("Number of rows to delete").'</td>';
-                        $html .= '<td style="font-weight:bold;padding:5px;">'.$this->l("Confirm").'</td>';
-                    $html .= '</tr>';
-
-                    $html .= '<tr><form method="POST" 
-                    action="index.php?controller=AdminModules&configure=ageverification&token='.Tools::getValue("token").'">';
-                        $html .= '<tr><input type="hidden" name="deleterows" value="1">';
-                        $html .= '<td style="padding:5px;"><input type="text" class="form-control" 
-                        style="text-align:center;" name="nrrows"></td>';
-                        $html .= '<td style="padding:5px;"><button type="submit" class="btn btn-warning">
-                        '.$this->l("DELETE").'
-                        </button></td>';
-                    $html .= '</form></tr>';
-                $html .= '</table>';
-
-                  $html .= '<h4 style="font-weight:bold;text-transform:uppercase;margin-top:40px;">
-                    '.$this->l("Setup a CRON task").'</h4>';
-                $html .= '<p>'.$this->l("If you need to clean the database more often, you can insert 
-                generated link into your hosting CRON tab with any frequency.").'</p>';
-
-        $html .= '<table style="margin: 0 auto;">';
-        $html .= '<tr>';
-        $html .= '<td style="font-weight:bold;padding:5px;">'.$this->l("Number of rows to delete for each execution of CRON task").'</td>';
-        $html .= '</tr>';
-        $html .= '<tr>';
-        $html .= '<td style="padding:5px;"><input type="text" style="width:100px;margin:0 auto;text-align:center;" 
-                    class="nr-to-del form-control"></td>';
-        $html .= '</tr>';
-        $html .= '</table>';
-
-        $html .= '<p>'.$this->l("Link will appear below - select & copy it").'</p>';
-                $html .= '<input type="text" class="form-control cron-url" style="width:300px;margin:0 auto;"
-                 value="">';
-
-        $html .= '<p style="color: red;margin-top: 10px;">'.$this->l("Do not share this link - keep it just for yourself!").'</p>';
-            $html .= '</div>';
-
-        $html .= '</div><script>
-        function isNumber(n) {
-          return !isNaN(parseFloat(n)) && isFinite(n);
-        }
-        $( document ).ready(function() {
-            var base ="'.$this->cronUrl().'";
-            $(".togglesettings").click(function() {
-                $(".av-settings").slideToggle();
-            });
-            
-            $(".nr-to-del").live("keyup", function() {
-                if($(this).val() == "" || !isNumber($(this).val())) {
-                    $(".cron-url").val("");
-                } else {
-                    if(isNumber($(this).val()) && parseInt($(this).val()) > 0) {
-                        var final = base + $(this).val();
-                        $(".cron-url").val(final);
-                    }
-                }    
-            });
-        });
-        </script>';
-
-        return $html;
-    }
-
-    private function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    {
-        $str = '';
-        $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 0; $i < $length; ++$i) {
-            $str .= $keyspace[rand(0, $max)];
-        }
-        return $str;
-    }
-
-    private function cronUrl()
-    {
-        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-        $shop = (int)Context::getContext()->shop->id;
-
-        if($protocol == "https://")
-            $domain = Db::getInstance()->getValue('SELECT domain_ssl FROM '._DB_PREFIX_.'shop_url WHERE id_shop='.$shop.'');
-        else
-            $domain = Db::getInstance()->getValue('SELECT `domain` FROM '._DB_PREFIX_.'shop_url WHERE id_shop='.$shop.'');
-
-        $uri = Db::getInstance()->getValue('SELECT `physical_uri` FROM '._DB_PREFIX_.'shop_url WHERE id_shop='.$shop.'');
-
-        return $protocol.$domain.$uri.'modules/ageverification/cron.php?secret='.$this->getSecret().'&nr=';
-    }
-
-    private function getSecret()
-    {
-        return Configuration::get("AGEVERIFICATION_SECRET");
     }
 }

@@ -22,14 +22,8 @@ class AgeverificationAvModuleFrontController extends ModuleFrontController
 
     public function initContent()
     {
-        if (Tools::getToken() == Tools::getValue("token")) {
-            $av = new AgeVerificationDb();
-            $av->token = Tools::getToken();
-            $av->accepted = 1;
-            $av->date = date("Y-m-d H:i:s");
-            $av->save();
-        }
-
+        $this->context->cookie->__set('ageverification_validated', true);
+        $this->context->cookie->write();
     }
 
 }

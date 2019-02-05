@@ -36,7 +36,6 @@ function avAjax()
         success: function (response) {
         },
         error: function (xhr, ajaxOptions, thrownError) {
-
         }
     });
 }
