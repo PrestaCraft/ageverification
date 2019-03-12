@@ -146,6 +146,22 @@
             }
         });
     });
+
+    {if $ps_version == "1.6"}
+        $( document ).ready(function() {
+            $('.remodal-av').remodal({ hashTracking: false });
+            $(".selectpicker").selectpicker();
+            var inst = $.remodal.lookup[$('[data-remodal-id=modalav]').data('remodal')];
+            inst.open();
+        });
+    {else}
+        jQuery( document ).ready(function() {
+            $('.remodal-av').remodal({ hashTracking: false });
+            $(".selectpicker").selectpicker();
+            var inst = $.remodal.lookup[$('[data-remodal-id=modalav]').data('remodal')];
+            inst.open();
+        });
+    {/if}
 </script>
 
 <div class="remodal remodal-av" data-remodal-id="modalav">

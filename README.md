@@ -1,7 +1,5 @@
 # Age verification popup (ageverification)
 
-### Current version: 1.2.0
-
 | PS compatibility       | Tested?            |    Ok?                |
 | ---------------------- |:------------------:| ---------------------:|
 | 1.6                    | :heavy_check_mark: |    :heavy_check_mark: |

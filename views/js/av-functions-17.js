@@ -39,9 +39,3 @@ function avAjax()
         }
     });
 }
-
-jQuery( document ).ready(function() {
-    $(".selectpicker").selectpicker();
-    var inst = $.remodal.lookup[$('[data-remodal-id=modalav]').data('remodal')];
-    inst.open();
-});
