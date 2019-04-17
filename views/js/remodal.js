@@ -66,7 +66,7 @@
    */
   var DEFAULTS = $.extend({
     hashTracking: true,
-    closeOnConfirm: true,
+    closeOnConfirm: false,
     closeOnCancel: true,
     closeOnEscape: false,
     closeOnOutsideClick: false,
@@ -466,10 +466,6 @@
 
     if (!id) {
 
-      // Check if we have currently opened modal and animation was completed
-      if (current && current.state === STATES.OPENED && current.settings.hashTracking) {
-        current.close();
-      }
     } else {
 
       // Catch syntax error if your hash is bad
@@ -548,9 +544,6 @@
 
       remodal.$modal.trigger(STATE_CHANGE_REASONS.CANCELLATION);
 
-      if (remodal.settings.closeOnCancel) {
-        remodal.close(STATE_CHANGE_REASONS.CANCELLATION);
-      }
     });
 
     // Add the event listener for the confirm button
@@ -558,10 +551,6 @@
       e.preventDefault();
 
       remodal.$modal.trigger(STATE_CHANGE_REASONS.CONFIRMATION);
-
-      if (remodal.settings.closeOnConfirm) {
-        remodal.close(STATE_CHANGE_REASONS.CONFIRMATION);
-      }
     });
 
     // Add the event listener for the overlay
@@ -570,10 +559,6 @@
 
       if (!$target.hasClass(namespacify('wrapper'))) {
         return;
-      }
-
-      if (remodal.settings.closeOnOutsideClick) {
-        remodal.close();
       }
     });
   }
@@ -761,13 +746,6 @@
       }
 
       $container[PLUGIN_NAME](options);
-    });
-
-    // Handles the keydown event
-    $(document).on('keydown.' + NAMESPACE, function(e) {
-      if (current && current.settings.closeOnEscape && current.state === STATES.OPENED && e.keyCode === 27) {
-        current.close();
-      }
     });
 
     // Handles the hashchange event

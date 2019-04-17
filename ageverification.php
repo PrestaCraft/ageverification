@@ -28,7 +28,7 @@ class Ageverification extends Module
     {
         $this->name = 'ageverification';
         $this->tab = 'front_office_features';
-        $this->version = '1.3.1';
+        $this->version = '2.0.0';
         $this->author = 'PrestaCraft';
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -52,11 +52,21 @@ class Ageverification extends Module
         Configuration::updateValue("AGEVERIFICATION_VALIDATION_MODE", "live");
         Configuration::updateValue("AGEVERIFICATION_BG_POPUP_COLOR", "#ffffff");
 
+        if (!Configuration::hasKey('AGEVERIFICATION_CAT_RESTRICTION')) {
+            Configuration::updateValue("AGEVERIFICATION_CAT_RESTRICTION", false);
+        }
+		
+		if (!Configuration::hasKey('AGEVERIFICATION_PROD_RESTRICTION')) {
+            Configuration::updateValue("AGEVERIFICATION_PROD_RESTRICTION", false);
+        }
+
         return parent::install() && $this->registerHook('displayFooter') && $this->registerHook('header');
     }
 
     public function uninstall()
     {
+        $this->context->cookie->__set('ageverification_validated', false);
+
         return parent::uninstall();
     }
 
@@ -64,7 +74,30 @@ class Ageverification extends Module
     {
         require_once(_PS_MODULE_DIR_ . 'ageverification/classes/AgeVerificationDb.php');
 
-        if ((bool)$this->context->cookie->__get('ageverification_validated') === false) {
+        $restrictCategory = (bool)Configuration::get('AGEVERIFICATION_CAT_RESTRICTION');
+        $restrictProduct = (bool)Configuration::get('AGEVERIFICATION_PROD_RESTRICTION');
+        $showPopup = false;
+
+        if ($restrictProduct && $restrictCategory) {
+            if ($this->categoryFound() || $this->productFound()) { // Enter category or product page
+                $showPopup = true;
+            }
+        } else {
+            if ($restrictCategory) {
+                $showPopup = $this->categoryFound() ? true : false;
+            } else {
+                if ($restrictProduct) {
+                    $showPopup = $this->productFound() ? true : false;
+                } else {
+                    if ((bool)$this->context->cookie->__get('ageverification_validated') === false) {
+                        $showPopup = true;
+                    }
+                }
+            }
+        }
+
+
+        if ($showPopup) {
             $this->context->smarty->assign(
                 'title', Configuration::get("AGEVERIFICATION_TITLE_".$this->context->language->id)
             );
@@ -237,10 +270,10 @@ class Ageverification extends Module
 
         $data = file_get_contents('http://prestacraft.com/version_checker.php?module='.$this->name.'&version='.$this->version.'');
 
-        $html = '<style> #firstline, #secondline, #thirdline, #fourthline { display: none; } 
+        $html = '<style> #firstline, #secondline, #thirdline, #fourthline, #fifthline { display: none; } 
                 .mColorPicker { width: 100px !important; } </style>
-                <div class="panel">
-                 <h3>'.$this->l('Version checker').'</h3>
+                <div class="panel" style="text-align: center;">
+                 <h3 style="text-align: center;">'.$this->l('Version checker').'</h3>
         '.$data.'
                 </div>';
 
@@ -255,8 +288,8 @@ class Ageverification extends Module
         $base = array(
             'form' => array(
                 'legend' => array(
-                'title' => $this->l('Settings'),
-                'icon' => 'icon-cogs',
+                    'title' => $this->l('Settings'),
+                    'icon' => 'icon-cogs',
                 ),
                 'input' => array(
                     array(
@@ -318,6 +351,67 @@ class Ageverification extends Module
                 'submit' => array(
                     'title' => $this->l('Save'),
                 ),
+            ),
+        );
+
+        $base['form']['input'][] = array(
+            'type' => 'text',
+            'label' => '<i class="icon-folder" style="color: #2eacce;"></i><span style="font-size: 14px;
+                        color: #2eacce;font-weight:bold;">
+                        &nbsp;&nbsp;'.$this->l("Categories & Products").'</span>',
+            'name' => 'fifthline',
+        );
+
+        $selected_cat = explode(',', Configuration::get("AGEVERIFICATION_CATEGORIES"));
+
+        $base['form']['input'][] = array(
+            'type'  => 'switch',
+            'label' => $this->l('Enable category restriction?'),
+            'desc' => $this->l('If you enable this option - popup will show only in categories selected below. If you disable - popup will show everywhere.'),
+            'name'  => 'AGEVERIFICATION_CAT_RESTRICTION',
+            'values' => array(
+                array(
+                    'id' => 'active_on',
+                    'value' => 1,
+                    'label' => $this->l('Enabled')
+                ),
+                array(
+                    'id' => 'active_off',
+                    'value' => 0,
+                    'label' => $this->l('Disabled')
+                )
+            ),
+        );
+
+        $base['form']['input'][] = array(
+            'type'  => 'categories',
+            'label' => $this->l('Select categories'),
+            'name'  => 'AGEVERIFICATION_CATEGORIES',
+            'tree'  => array(
+                'id'                  => 'categories-tree',
+                'root_category'       => $this->context->shop->getCategory(),
+                'selected_categories' => $selected_cat,
+                'use_search'          => true,
+                'use_checkbox'        => true
+            )
+        );
+
+        $base['form']['input'][] = array(
+            'type'  => 'switch',
+            'label' => $this->l('Display on product pages?'),
+            'desc' => $this->l('If you enable this option - popup will show also on the product pages belonging to selected categories and their children.'),
+            'name'  => 'AGEVERIFICATION_PROD_RESTRICTION',
+            'values' => array(
+                array(
+                    'id' => 'active_on',
+                    'value' => 1,
+                    'label' => $this->l('Enabled')
+                ),
+                array(
+                    'id' => 'active_off',
+                    'value' => 0,
+                    'label' => $this->l('Disabled')
+                )
             ),
         );
 
@@ -526,6 +620,10 @@ class Ageverification extends Module
             'secondline' => 'by prestacraft',
             'thirdline' => 'by prestacraft',
             'fourthline' => 'by prestacraft',
+            'fifthline' => 'by prestacraft',
+            'AGEVERIFICATION_PROD_RESTRICTION' => Configuration::get('AGEVERIFICATION_PROD_RESTRICTION'),
+            'AGEVERIFICATION_CAT_RESTRICTION' => Configuration::get('AGEVERIFICATION_CAT_RESTRICTION'),
+            'AGEVERIFICATION_CATEGORIES' => Configuration::get('AGEVERIFICATION_CATEGORIES'),
             'AGEVERIFICATION_AGE' => Configuration::get('AGEVERIFICATION_AGE'),
             'AGEVERIFICATION_TYPE' => Configuration::get('AGEVERIFICATION_TYPE'),
             'AGEVERIFICATION_VALIDATION_MODE' => Configuration::get('AGEVERIFICATION_VALIDATION_MODE'),
@@ -553,9 +651,18 @@ class Ageverification extends Module
     protected function postProcess()
     {
         $form_values = $this->getConfigFormValues();
+        $notAllowed = array(
+            'firstline', 'secondline', 'thirdline', 'fourthline', 'fifthline'
+        );
 
         foreach (array_keys($form_values) as $key) {
-            Configuration::updateValue($key, Tools::getValue($key));
+            if ($key == 'AGEVERIFICATION_CATEGORIES') {
+                Configuration::updateValue($key, implode(',', Tools::getValue($key)));
+            } else {
+                if (!in_array($key, $notAllowed)) {
+                    Configuration::updateValue($key, Tools::getValue($key));
+                }
+            }
         }
 
         $languages = Language::getLanguages(true);
@@ -564,19 +671,23 @@ class Ageverification extends Module
             $langid = $lang['id_lang'];
             Configuration::updateValue(
                 "AGEVERIFICATION_CONTENT_{$langid}",
-                Tools::getValue("AGEVERIFICATION_CONTENT_{$langid}")
+                Tools::getValue("AGEVERIFICATION_CONTENT_{$langid}"), 
+				true
             );
             Configuration::updateValue(
                 "AGEVERIFICATION_TITLE_{$langid}",
-                Tools::getValue("AGEVERIFICATION_TITLE_{$langid}")
+                Tools::getValue("AGEVERIFICATION_TITLE_{$langid}"), 
+				true
             );
             Configuration::updateValue(
                 "AGEVERIFICATION_BIRTH_{$langid}",
-                Tools::getValue("AGEVERIFICATION_BIRTH_{$langid}")
+                Tools::getValue("AGEVERIFICATION_BIRTH_{$langid}"), 
+				true
             );
             Configuration::updateValue(
                 "AGEVERIFICATION_BUTTON_{$langid}",
-                Tools::getValue("AGEVERIFICATION_BUTTON_{$langid}")
+                Tools::getValue("AGEVERIFICATION_BUTTON_{$langid}"), 
+				true
             );
         }
     }
@@ -584,5 +695,61 @@ class Ageverification extends Module
     public static function getVersion()
     {
         return Tools::substr(_PS_VERSION_, 0, 3);
+    }
+
+    private function categoryFound()
+    {
+        $categoryArray = explode(',',Configuration::get('AGEVERIFICATION_CATEGORIES'));
+
+        if (Tools::getValue("controller") == 'category') {
+            if (in_array(Tools::getValue("id_category"), $categoryArray) &&
+                (bool)$this->context->cookie->__get('ageverification_validated') === false) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    private function productFound()
+    {
+        $categoryArray = explode(',',Configuration::get('AGEVERIFICATION_CATEGORIES'));
+        $productCategoriesArray = array();
+
+        if (Tools::getValue("controller") == 'product') {
+            $productCategories = Db::getInstance()->executeS(
+                'SELECT id_category FROM '._DB_PREFIX_.'category_product 
+                        WHERE id_product='.(int)Tools::getValue("id_product").''
+            );
+
+            if (count($productCategories) > 0) {
+                foreach ($productCategories as $item) {
+                    $productCategoriesArray[] = $item['id_category'];
+                }
+            }
+
+            if ((bool)$this->context->cookie->__get('ageverification_validated') === false) {
+                if (count($productCategoriesArray) > 0) {
+                    foreach ($productCategoriesArray as $item) {
+                        $cat = new Category($item);
+                        $categories = $cat->getAllParents();
+                        if (in_array($item, $categoryArray)) {
+                            return true;
+                        }
+                        foreach ($categories as $cat) {
+                            if (in_array($cat, $categoryArray)) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }

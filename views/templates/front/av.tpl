@@ -75,6 +75,30 @@
 
 <script>
     var mode = "{$mode}";
+    var inst;
+
+    function avAllow()
+    {
+        $(".remodal-av .remodal-confirm").removeClass("dis-age dis");
+        $(".text-unverified").hide();
+        $(".text-age").hide();
+        $(".text-verified").fadeIn();
+        $(".remodal-confirm").attr("data-remodal-action", "confirm");
+    }
+
+    function avReject()
+    {
+        if (mode != "classic")
+            $(".remodal-av .remodal-confirm").removeClass("dis");
+
+        if (mode != "classic")
+            $(".remodal-av .remodal-confirm").addClass("dis-age");
+
+        $(".text-verified").hide();
+        $(".text-unverified").hide();
+        $(".text-age").fadeIn();
+        $(".remodal-confirm").attr("data-remodal-action", "");
+    }
 
     function avLiveValidation()
     {
@@ -143,6 +167,7 @@
         jQuery(".remodal-confirm").click(function () {
             if($(this).attr("data-remodal-action") == "confirm") {
                 avAjax();
+                inst.close();
             }
         });
     });
@@ -151,14 +176,14 @@
         $( document ).ready(function() {
             $('.remodal-av').remodal({ hashTracking: false });
             $(".selectpicker").selectpicker();
-            var inst = $.remodal.lookup[$('[data-remodal-id=modalav]').data('remodal')];
+            inst = $.remodal.lookup[$('[data-remodal-id=modalav]').data('remodal')];
             inst.open();
         });
     {else}
         jQuery( document ).ready(function() {
             $('.remodal-av').remodal({ hashTracking: false });
             $(".selectpicker").selectpicker();
-            var inst = $.remodal.lookup[$('[data-remodal-id=modalav]').data('remodal')];
+            inst = $.remodal.lookup[$('[data-remodal-id=modalav]').data('remodal')];
             inst.open();
         });
     {/if}
@@ -254,7 +279,6 @@
 
             {/if}
         </span>
-
         {if $mode == "classic"}
         <span class="text-age" style="margin: 0 20px;display: none;">
             {if !$button_text}
