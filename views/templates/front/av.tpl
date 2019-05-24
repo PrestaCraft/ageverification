@@ -219,7 +219,7 @@
             <option value="5">{l s='May' mod='ageverification'}</option>
             <option value="6">{l s='June' mod='ageverification'}</option>
             <option value="7">{l s='July' mod='ageverification'}</option>
-            <option value="8">{l s='April' mod='ageverification'}</option>
+            <option value="8">{l s='August' mod='ageverification'}</option>
             <option value="9">{l s='September' mod='ageverification'}</option>
             <option value="10">{l s='October' mod='ageverification'}</option>
             <option value="11">{l s='November' mod='ageverification'}</option>
